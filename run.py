@@ -14,7 +14,11 @@ from vnpy_webtrader import WebTraderApp
 from vnpy_riskmanager import RiskManagerApp
 from vnpy_algotrading import AlgoTradingApp
 
-from vnpy_xt import XtGateway
+# from vnpy_xt import XtGateway
+# from vnpy_qmt.qmt_gateway import QmtGateway
+
+from vnpy_portfoliostrategy import PortfolioStrategyApp
+from vnpy_portfoliomanager import PortfolioManagerApp
 
 def main():
     """Start VeighNa Trader"""
@@ -24,9 +28,11 @@ def main():
     main_engine = MainEngine(event_engine)
 
     main_engine.add_gateway(IbGateway)
-    main_engine.add_gateway(XtGateway)
+    # main_engine.add_gateway(XtGateway)
+    # main_engine.add_gateway(QmtGateway)
 
     main_engine.add_app(CtaStrategyApp)
+    main_engine.add_app(PortfolioStrategyApp)
     main_engine.add_app(CtaBacktesterApp)
     main_engine.add_app(DataManagerApp)
     main_engine.add_app(SpreadTradingApp)
@@ -36,6 +42,7 @@ def main():
     main_engine.add_app(WebTraderApp)
     main_engine.add_app(RiskManagerApp)
     main_engine.add_app(AlgoTradingApp)
+    main_engine.add_app(PortfolioManagerApp)
 
 
     main_window = MainWindow(main_engine, event_engine)
